@@ -7,7 +7,16 @@
 </head>
 <body>
     <p>Time: <span id="time"></span></p>
+    <button id="update_btn">update</button>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script>
+        const tg = window.Telegram.WebApp;
+        tg.expand();
+
+        const updateBtn = document.getElementById("update_btn");
+        updateBtn.addEventListener("click", () => {
+            tg.sendData(new Date().toLocaleString());
+        });
         const timeSpan = document.getElementById("time");
 
         function setTime() {
